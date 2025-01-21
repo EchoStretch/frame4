@@ -1,0 +1,39 @@
+name: Frame4 Payload
+
+on:
+  push:
+    paths:
+      - '**'
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  attestations: write
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Set execute permissions for scripts
+      run: chmod +x build.sh
+
+    - name: Build and package binaries
+      run: ./build.sh clean
+
+    - name: Attest
+      uses: actions/attest-build-provenance@v1
+      continue-on-error: true  # this will fail if the repo is private
+      with: 
+        subject-path: ./Frame4.bin
+
+    - name: Upload
+      uses: actions/upload-artifact@v3
+      with:
+        name: Frame4
+        path: ./Frame4.bin
+        if-no-files-found: error
