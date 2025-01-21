@@ -83,11 +83,11 @@ void init_505sdk(uint8_t *kbase) {
     pause = (void *)(kbase + 0x3FB920);
     kthread_add = (void *)(kbase + 0x138360);
     kthread_exit = (void *)(kbase + 0x138640);
-    sched_prio = (void *)(kbase + 0x31EE00);
+    sched_prio = (void *)(kbase + 0x2EFF70);
     sched_add = (void *)(kbase + 0x31F150);
     kern_yield = (void *)(kbase + 0x3FBC40);
     fill_regs = (void *)(kbase + 0x234BA0);
-    set_regs = (void *)(kbase + 0x234CD0);
+    set_regs = (void *)(kbase + 0x235A80);
     create_thread = (void *)(kbase + 0x1BE1F0);
     kproc_create = (void *)(kbase + 0x137DF0);
     kthread_set_affinity = (void *)(kbase + 0x138CC0);
@@ -103,7 +103,7 @@ void init_505sdk(uint8_t *kbase) {
     mtx_unlock_sleep = (void *)(kbase + 0x401FA0);
     kern_reboot = (void *)(kbase + 0x10D390);
     vm_map_lock_read = (void *)(kbase + 0x19F140);
-    vm_map_lookup_entry = (void *)(kbase + 0x19F760);
+    vm_map_lookup_entry = (void *)(kbase + 0x1A3430);
     vm_map_unlock_read = (void *)(kbase + 0x19F190);
     vmspace_acquire_ref = (void *)(kbase + 0x19EF90);
     vmspace_free = (void *)(kbase + 0x19EDC0);
@@ -145,7 +145,7 @@ void init_672sdk(uint8_t *kbase) {
     sched_add = (void *)(kbase + 0x445F20);
     kern_yield = (void *)(kbase + 0x22A3A0);
     fill_regs = (void *)(kbase + 0xA36D0);
-    set_regs = (void *)(kbase + 0xA3800);
+    set_regs = (void *)(kbase + 0xA3670);
     create_thread = (void *)(kbase + 0x4A6FB0);
     kproc_create = (void *)(kbase + 0x8A0A0);
     kthread_set_affinity = (void *)(kbase + 0x8AF70);
@@ -181,12 +181,13 @@ void init_672sdk(uint8_t *kbase) {
     sysents = (void *)(kbase + 0x111E000);
 }
 
-void init_702sdk(uint8_t *kbase) {
+
+void init_70Xsdk(uint8_t *kbase) {
     Xfast_syscall = (void *)(kbase + 0x1C0);
     copyin = (void *)(kbase + 0x2F230);
     copyout = (void *)(kbase + 0x2F140);
     printf = (void *)(kbase + 0xBC730);
-    vprintf = (void *)(kbase + 0xBC7a0);
+    vprintf = (void *)(kbase + 0xBC7A0);
     malloc = (void *)(kbase + 0x301840);
     free = (void *)(kbase + 0x301A40);
     memcpy = (void *)(kbase + 0x2F040);
@@ -213,7 +214,7 @@ void init_702sdk(uint8_t *kbase) {
     sx_xlock = (void *)(kbase + 0x1AE030);
     sx_xunlock = (void *)(kbase + 0x1AE1F0);
     mtx_init = (void *)(kbase + 0xBBB10);
-    mtx_lock_spin_flags = (void *)(kbase + 0xBB490);
+    mtx_lock_spin_flags = (void *)(kbase + 0x49400);
     mtx_unlock_spin_flags = (void *)(kbase + 0xBB650);
     mtx_lock_sleep = (void *)(kbase + 0xBB060);
     mtx_unlock_sleep = (void *)(kbase + 0xBB330);
@@ -223,8 +224,8 @@ void init_702sdk(uint8_t *kbase) {
     vm_map_unlock_read = (void *)(kbase + 0x25FBE0);
     vmspace_acquire_ref = (void *)(kbase + 0x25F9F0);
     vmspace_free = (void *)(kbase + 0x25F820);
-    vm_map_delete = (void *)(kbase + 0x262700);
-    vm_map_protect = (void *)(kbase + 0x264A50);
+    vm_map_delete = (void *)(kbase + 0x260BD0);
+    vm_map_protect = (void *)(kbase + 0x36AE90);
     vm_map_findspace = (void *)(kbase + 0x262CC0);
     vm_map_insert = (void *)(kbase + 0x260D60);
     vm_map_lock = (void *)(kbase + 0x25FA50);
@@ -237,6 +238,180 @@ void init_702sdk(uint8_t *kbase) {
     rootvnode = (void *)(kbase + 0x22C5750);
     allproc = (void *)(kbase + 0x1B48318);
     sysents = (void *)(kbase + 0x1125660);
+}
+
+void init_75Xsdk(uint8_t *kbase) {
+    Xfast_syscall = (void *)(kbase + 0x1C0);
+    copyin = (void *)(kbase + 0x28F9F0);
+    copyout = (void *)(kbase + 0x28F900);
+    printf = (void *)(kbase + 0x26F740);
+    vprintf = (void *)(kbase + 0x26F7B0);
+    malloc = (void *)(kbase + 0x1D6680);
+    free = (void *)(kbase + 0x1D6870);
+    memcpy = (void *)(kbase + 0x28F800);
+    memset = (void *)(kbase + 0x8D6F0);
+    memcmp = (void *)(kbase + 0x31D250);
+    kmem_alloc = (void *)(kbase + 0x1753E0);
+    strlen = (void *)(kbase + 0x2E8BC0);
+    strcpy = (void *)(kbase + 0x46B0B0);
+    strncmp = (void *)(kbase + 0xBF670);
+    pause = (void *)(kbase + 0x86E80);
+    kthread_add = (void *)(kbase + 0xDE50);
+    kthread_exit = (void *)(kbase + 0xE140);
+    sched_prio = (void *)(kbase + 0x18FDF0);
+    sched_add = (void *)(kbase + 0x190930);
+    kern_yield = (void *)(kbase + 0x871B0);
+    fill_regs = (void *)(kbase + 0x3DB0D0);
+    set_regs = (void *)(kbase + 0x3DB200);
+    create_thread = (void *)(kbase + 0x47AB60);
+    kproc_create = (void *)(kbase + 0xD8F0);
+    kthread_set_affinity = (void *)(kbase + 0xE7C0);
+    kthread_suspend_check = (void *)(kbase + 0xE550);
+    kproc_kthread_add = (void *)(kbase + 0xE670);
+    sx_init_flags = (void *)(kbase + 0xD1380);
+    sx_xlock = (void *)(kbase + 0xD1600);
+    sx_xunlock = (void *)(kbase + 0xD17C0);
+    mtx_init = (void *)(kbase + 0x3105B0);
+    mtx_lock_spin_flags = (void *)(kbase + 0x30FF30);
+    mtx_unlock_spin_flags = (void *)(kbase + 0x3100F0);
+    mtx_lock_sleep = (void *)(kbase + 0x30FB10);
+    mtx_unlock_sleep = (void *)(kbase + 0x30FDD0);
+    kern_reboot = (void *)(kbase + 0xD28E0);
+    vm_map_lock_read = (void *)(kbase + 0x2FC430);
+    vm_map_lookup_entry = (void *)(kbase + 0x2FCA70);
+    vm_map_unlock_read = (void *)(kbase + 0x2FC480);
+    vmspace_acquire_ref = (void *)(kbase + 0x2FC290);
+    vmspace_free = (void *)(kbase + 0x2FC0C0);
+    vm_map_delete = (void *)(kbase + 0x2FEFA0);
+    vm_map_protect = (void *)(kbase + 0x3012F0);
+    vm_map_findspace = (void *)(kbase + 0x2FF560);
+    vm_map_insert = (void *)(kbase + 0x2FD640);
+    vm_map_lock = (void *)(kbase + 0x2FC2E0);
+    vm_map_unlock = (void *)(kbase + 0x2FC350);
+    proc_rwmem = (void *)(kbase + 0x361310);
+    disable_console_output = (void *)(kbase + 0x1564910);
+    M_TEMP = (void *)(kbase + 0x1556DA0);
+    kernel_map = (void *)(kbase + 0x21405B8);
+    prison0 = (void *)(kbase + 0x113B728);
+    rootvnode = (void *)(kbase + 0x1B463E0);
+    allproc = (void *)(kbase + 0x213C828);
+    sysents = (void *)(kbase + 0x1122340);
+}
+
+void init_80Xsdk(uint8_t *kbase) {
+    Xfast_syscall = (void *)(kbase + 0x1C0);
+    copyin = (void *)(kbase + 0x25E3B0);
+    copyout = (void *)(kbase + 0x25E2C0);
+    printf = (void *)(kbase + 0x430AE0);
+    vprintf = (void *)(kbase + 0x430B50);
+    malloc = (void *)(kbase + 0x46F7F0);
+    free = (void *)(kbase + 0x46F9B0);
+    memcpy = (void *)(kbase + 0x25E1C0);
+    memset = (void *)(kbase + 0xF6C60);
+    memcmp = (void *)(kbase + 0x195A90);
+    kmem_alloc = (void *)(kbase + 0x1B3F0);
+    strlen = (void *)(kbase + 0x2F6090);
+    strcpy = (void *)(kbase + 0x1E0870);
+    strncmp = (void *)(kbase + 0x1846D0);
+    pause = (void *)(kbase + 0x3381D0);
+    kthread_add = (void *)(kbase + 0x46E530);
+    kthread_exit = (void *)(kbase + 0x46E820);
+    sched_prio = (void *)(kbase + 0x1067D0);
+    sched_add = (void *)(kbase + 0x1072D0);
+    kern_yield = (void *)(kbase + 0x3384E0);
+    fill_regs = (void *)(kbase + 0x4BA00);
+    set_regs = (void *)(kbase + 0x4BB30);
+    create_thread = (void *)(kbase + 0x26FA50);
+    kproc_create = (void *)(kbase + 0x46DFD0);
+    kthread_set_affinity = (void *)(kbase + 0x46EE90);
+    kthread_suspend_check = (void *)(kbase + 0x46EC30);
+    kproc_kthread_add = (void *)(kbase + 0x46ED40);
+    sx_init_flags = (void *)(kbase + 0x43A0C0);
+    sx_xlock = (void *)(kbase + 0x43A340);
+    sx_xunlock = (void *)(kbase + 0x43A500);
+    mtx_init = (void *)(kbase + 0x2984A0);
+    mtx_lock_spin_flags = (void *)(kbase + 0x297E10);
+    mtx_unlock_spin_flags = (void *)(kbase + 0x297FE0);
+    mtx_lock_sleep = (void *)(kbase + 0x2979F0);
+    mtx_unlock_sleep = (void *)(kbase + 0x297CB0);
+    kern_reboot = (void *)(kbase + 0x155560);
+    vm_map_lock_read = (void *)(kbase + 0x3E7680);
+    vm_map_lookup_entry = (void *)(kbase + 0x3E7CC0);
+    vm_map_unlock_read = (void *)(kbase + 0x3E76D0);
+    vmspace_acquire_ref = (void *)(kbase + 0x3E74E0);
+    vmspace_free = (void *)(kbase + 0x3E7310);
+    vm_map_delete = (void *)(kbase + 0x3EA180);
+    vm_map_protect = (void *)(kbase + 0x3EC4C0);
+    vm_map_findspace = (void *)(kbase + 0x3EA740);
+    vm_map_insert = (void *)(kbase + 0x3E8880);
+    vm_map_lock = (void *)(kbase + 0x3E7530);
+    vm_map_unlock = (void *)(kbase + 0x3E75A0);
+    proc_rwmem = (void *)(kbase + 0x173770);
+    disable_console_output = (void *)(kbase + 0x155D190);
+    M_TEMP = (void *)(kbase + 0x1A77E10);
+    kernel_map = (void *)(kbase + 0x1B243E0);
+    prison0 = (void *)(kbase + 0x111A7D0);
+    rootvnode = (void *)(kbase + 0x1B8C730);
+    allproc = (void *)(kbase + 0x1B244E0);
+    sysents = (void *)(kbase + 0x10FC4D0);
+}
+
+void init_85Xsdk(uint8_t *kbase) {
+    Xfast_syscall = (void *)(kbase + 0x1C0);
+    copyin = (void *)(kbase + 0x3A42E0);
+    copyout = (void *)(kbase + 0x3A41F0);
+    printf = (void *)(kbase + 0x15D570);
+    vprintf = (void *)(kbase + 0x15D5E0);
+    malloc = (void *)(kbase + 0xB5A40);
+    free = (void *)(kbase + 0xB5C00);
+    memcpy = (void *)(kbase + 0x3A40F0);
+    memset = (void *)(kbase + 0x3D6710);
+    memcmp = (void *)(kbase + 0x20F280);
+    kmem_alloc = (void *)(kbase + 0x2199A0);
+    strlen = (void *)(kbase + 0x270C40);
+    strcpy = (void *)(kbase + 0x21AD40);
+    strncmp = (void *)(kbase + 0x3CF6D0);
+    pause = (void *)(kbase + 0x27C590);
+    kthread_add = (void *)(kbase + 0x10B70);
+    kthread_exit = (void *)(kbase + 0x10E60);
+    sched_prio = (void *)(kbase + 0xEE7F0);
+    sched_add = (void *)(kbase + 0xEF2F0);
+    kern_yield = (void *)(kbase + 0x27C8A0);
+    fill_regs = (void *)(kbase + 0x268F70);
+    set_regs = (void *)(kbase + 0x2690A0);
+    create_thread = (void *)(kbase + 0x392440);
+    kproc_create = (void *)(kbase + 0x10610);
+    kthread_set_affinity = (void *)(kbase + 0x114D0);
+    kthread_suspend_check = (void *)(kbase + 0x11270);
+    kproc_kthread_add = (void *)(kbase + 0x11380);
+    sx_init_flags = (void *)(kbase + 0x2BAC90);
+    sx_xlock = (void *)(kbase + 0x2BAF10);
+    sx_xunlock = (void *)(kbase + 0x2BB0D0);
+    mtx_init = (void *)(kbase + 0x26FB80);
+    mtx_lock_spin_flags = (void *)(kbase + 0x26F4F0);
+    mtx_unlock_spin_flags = (void *)(kbase + 0x26F6C0);
+    mtx_lock_sleep = (void *)(kbase + 0x26F0D0);
+    mtx_unlock_sleep = (void *)(kbase + 0x26F390);
+    kern_reboot = (void *)(kbase + 0x40B420);
+    vm_map_lock_read = (void *)(kbase + 0x1486D0);
+    vm_map_lookup_entry = (void *)(kbase + 0x148D10);
+    vm_map_unlock_read = (void *)(kbase + 0x148720);
+    vmspace_acquire_ref = (void *)(kbase + 0x148530);
+    vmspace_free = (void *)(kbase + 0x148360);
+    vm_map_delete = (void *)(kbase + 0x14B1D0);
+    vm_map_protect = (void *)(kbase + 0x14D510);
+    vm_map_findspace = (void *)(kbase + 0x14B790);
+    vm_map_insert = (void *)(kbase + 0x1498D0);
+    vm_map_lock = (void *)(kbase + 0x148580);
+    vm_map_unlock = (void *)(kbase + 0x1485F0);
+    proc_rwmem = (void *)(kbase + 0x131B50);
+    disable_console_output = (void *)(kbase + 0x153AE88);
+    M_TEMP = (void *)(kbase + 0x1528FF0);
+    kernel_map = (void *)(kbase + 0x1C64228);
+    prison0 = (void *)(kbase + 0x111A8F0);
+    rootvnode = (void *)(kbase + 0x1C66150);
+    allproc = (void *)(kbase + 0x1BD72D8);
+    sysents = (void *)(kbase + 0x10FC5C0);
 }
 
 void init_900sdk(uint8_t *kbase) {
@@ -297,8 +472,240 @@ void init_900sdk(uint8_t *kbase) {
     sysents = (void *)(kbase + 0x1100310);
 }
 
+void init_90Xsdk(uint8_t *kbase) {
+    Xfast_syscall = (void *)(kbase + 0x1C0);
+    copyin = (void *)(kbase + 0x271320);
+    copyout = (void *)(kbase + 0x271230);
+    printf = (void *)(kbase + 0xB79E0);
+    vprintf = (void *)(kbase + 0xB7A50);
+    malloc = (void *)(kbase + 0x3017B0);
+    free = (void *)(kbase + 0x301970);
+    memcpy = (void *)(kbase + 0x271130);
+    memset = (void *)(kbase + 0x149670);
+    memcmp = (void *)(kbase + 0x271AA0);
+    kmem_alloc = (void *)(kbase + 0x37A070);
+    strlen = (void *)(kbase + 0x30F0F0);
+    strcpy = (void *)(kbase + 0x189F30);
+    strncmp = (void *)(kbase + 0x124700);
+    pause = (void *)(kbase + 0x451DA0);
+    kthread_add = (void *)(kbase + 0x96F40);
+    kthread_exit = (void *)(kbase + 0x97230);
+    sched_prio = (void *)(kbase + 0x1CBB40);
+    sched_add = (void *)(kbase + 0x1CC640);
+    kern_yield = (void *)(kbase + 0x4520B0);
+    fill_regs = (void *)(kbase + 0x314510);
+    set_regs = (void *)(kbase + 0x314640);
+    create_thread = (void *)(kbase + 0x1ED620);
+    kproc_create = (void *)(kbase + 0x969E0);
+    kthread_set_affinity = (void *)(kbase + 0x978A0);
+    kthread_suspend_check = (void *)(kbase + 0x97640);
+    kproc_kthread_add = (void *)(kbase + 0x97750);
+    sx_init_flags = (void *)(kbase + 0x43C2B0);
+    sx_xlock = (void *)(kbase + 0x43C530);
+    sx_xunlock = (void *)(kbase + 0x43C6F0);
+    mtx_init = (void *)(kbase + 0x2EF5E0);
+    mtx_lock_spin_flags = (void *)(kbase + 0x2EEF50);
+    mtx_unlock_spin_flags = (void *)(kbase + 0x2EF120);
+    mtx_lock_sleep = (void *)(kbase + 0x2EEB30);
+    mtx_unlock_sleep = (void *)(kbase + 0x2EEDF0);
+    kern_reboot = (void *)(kbase + 0x29A000);
+    vm_map_lock_read = (void *)(kbase + 0x7BB80);
+    vm_map_lookup_entry = (void *)(kbase + 0x7C1C0);
+    vm_map_unlock_read = (void *)(kbase + 0x7BBD0);
+    vmspace_acquire_ref = (void *)(kbase + 0x7B9E0);
+    vmspace_free = (void *)(kbase + 0x7B810);
+    vm_map_delete = (void *)(kbase + 0x7E680);
+    vm_map_protect = (void *)(kbase + 0x809C0);
+    vm_map_findspace = (void *)(kbase + 0x7EC40);
+    vm_map_insert = (void *)(kbase + 0x7CD80);
+    vm_map_lock = (void *)(kbase + 0x7BA30);
+    vm_map_unlock = (void *)(kbase + 0x7BAA0);
+    proc_rwmem = (void *)(kbase + 0x41CA70);
+    disable_console_output = (void *)(kbase + 0x1527F60);
+    M_TEMP = (void *)(kbase + 0x155E1E0);
+    kernel_map = (void *)(kbase + 0x2264D48);
+    prison0 = (void *)(kbase + 0x111B840);
+    rootvnode = (void *)(kbase + 0x21EBF20);
+    allproc = (void *)(kbase + 0x1B906E0);
+    sysents = (void *)(kbase + 0x10FC310);
+}
+
+void init_9XXsdk(uint8_t *kbase) {
+    Xfast_syscall = (void *)(kbase + 0x1C0);
+    copyin = (void *)(kbase + 0x201EB0);
+    copyout = (void *)(kbase + 0x201DC0);
+    printf = (void *)(kbase + 0x205470);
+    vprintf = (void *)(kbase + 0x2054E0);
+    malloc = (void *)(kbase + 0x29D330);
+    free = (void *)(kbase + 0x29D4F0);
+    memcpy = (void *)(kbase + 0x201CC0);
+    memset = (void *)(kbase + 0xC1720);
+    memcmp = (void *)(kbase + 0x47CB80);
+    kmem_alloc = (void *)(kbase + 0x1889D0);
+    strlen = (void *)(kbase + 0x3F1980);
+    strcpy = (void *)(kbase + 0x21F500);
+    strncmp = (void *)(kbase + 0x1360B0);
+    pause = (void *)(kbase + 0x62120);
+    kthread_add = (void *)(kbase + 0x455390);
+    kthread_exit = (void *)(kbase + 0x455680);
+    sched_prio = (void *)(kbase + 0x456710);
+    sched_add = (void *)(kbase + 0x457210);
+    kern_yield = (void *)(kbase + 0x62430);
+    fill_regs = (void *)(kbase + 0x34EF50);
+    set_regs = (void *)(kbase + 0x34F080);
+    create_thread = (void *)(kbase + 0x1EC430);
+    kproc_create = (void *)(kbase + 0x454E30);
+    kthread_set_affinity = (void *)(kbase + 0x455CF0);
+    kthread_suspend_check = (void *)(kbase + 0x455A90);
+    kproc_kthread_add = (void *)(kbase + 0x455BA0);
+    sx_init_flags = (void *)(kbase + 0x42B8C0);
+    sx_xlock = (void *)(kbase + 0x42BB40);
+    sx_xunlock = (void *)(kbase + 0x42BD00);
+    mtx_init = (void *)(kbase + 0x38C460);
+    mtx_lock_spin_flags = (void *)(kbase + 0x38BE00);
+    mtx_unlock_spin_flags = (void *)(kbase + 0x38BFA0);
+    mtx_lock_sleep = (void *)(kbase + 0x38B9F0);
+    mtx_unlock_sleep = (void *)(kbase + 0x38BCA0);
+    kern_reboot = (void *)(kbase + 0x331DF0);
+    vm_map_lock_read = (void *)(kbase + 0x191D30);
+    vm_map_lookup_entry = (void *)(kbase + 0x192370);
+    vm_map_unlock_read = (void *)(kbase + 0x191D80);
+    vmspace_acquire_ref = (void *)(kbase + 0x191BA0);
+    vmspace_free = (void *)(kbase + 0x1919D0);
+    vm_map_delete = (void *)(kbase + 0x194830);
+    vm_map_protect = (void *)(kbase + 0x196B70);
+    vm_map_findspace = (void *)(kbase + 0x194DF0);
+    vm_map_insert = (void *)(kbase + 0x192F30);
+    vm_map_lock = (void *)(kbase + 0x191BE0);
+    vm_map_unlock = (void *)(kbase + 0x191C50);
+    proc_rwmem = (void *)(kbase + 0x479620);
+    disable_console_output = (void *)(kbase + 0x1A50BE0);
+    M_TEMP = (void *)(kbase + 0x1A4ECB0);
+    kernel_map = (void *)(kbase + 0x2147830);
+    prison0 = (void *)(kbase + 0x11137D0);
+    rootvnode = (void *)(kbase + 0x21A6C30);
+    allproc = (void *)(kbase + 0x221D2A0);
+    sysents = (void *)(kbase + 0x10F92F0);
+}
+
+void init_100Xsdk(uint8_t *kbase) {
+    Xfast_syscall = (void *)(kbase + 0x1C0);
+    copyin = (void *)(kbase + 0x472F10);
+    copyout = (void *)(kbase + 0x472E20);
+    printf = (void *)(kbase + 0xC50F0);
+    vprintf = (void *)(kbase + 0xC5160);
+    malloc = (void *)(kbase + 0x109A60);
+    free = (void *)(kbase + 0x109C20);
+    memcpy = (void *)(kbase + 0x472D20);
+    memset = (void *)(kbase + 0x3E6F0);
+    memcmp = (void *)(kbase + 0x109940);
+    kmem_alloc = (void *)(kbase + 0x33B040);
+    strlen = (void *)(kbase + 0x2E0340);
+    strcpy = (void *)(kbase + 0x466E30);
+    strncmp = (void *)(kbase + 0x1219B0);
+    pause = (void *)(kbase + 0x286350);
+    kthread_add = (void *)(kbase + 0x2082F0);
+    kthread_exit = (void *)(kbase + 0x2085E0);
+    sched_prio = (void *)(kbase + 0x1D5D50);
+    sched_add = (void *)(kbase + 0x1D6850);
+    kern_yield = (void *)(kbase + 0x286660);
+    fill_regs = (void *)(kbase + 0x7D090);
+    set_regs = (void *)(kbase + 0x7D1C0);
+    create_thread = (void *)(kbase + 0x182F0);
+    kproc_create = (void *)(kbase + 0x207D90);
+    kthread_set_affinity = (void *)(kbase + 0x208C50);
+    kthread_suspend_check = (void *)(kbase + 0x2089F0);
+    kproc_kthread_add = (void *)(kbase + 0x208B00);
+    sx_init_flags = (void *)(kbase + 0xA9800);
+    sx_xlock = (void *)(kbase + 0xA9A80);
+    sx_xunlock = (void *)(kbase + 0xA9C40);
+    mtx_init = (void *)(kbase + 0x1E05C0);
+    mtx_lock_spin_flags = (void *)(kbase + 0x1DFF60);
+    mtx_unlock_spin_flags = (void *)(kbase + 0x1E0100);
+    mtx_lock_sleep = (void *)(kbase + 0x1DFB50);
+    mtx_unlock_sleep = (void *)(kbase + 0x1DFE00);
+    kern_reboot = (void *)(kbase + 0x480CE0);
+    vm_map_lock_read = (void *)(kbase + 0x38D070);
+    vm_map_lookup_entry = (void *)(kbase + 0x38D6B0);
+    vm_map_unlock_read = (void *)(kbase + 0x38D0C0);
+    vmspace_acquire_ref = (void *)(kbase + 0x38CEE0);
+    vmspace_free = (void *)(kbase + 0x38CD10);
+    vm_map_delete = (void *)(kbase + 0x38FB70);
+    vm_map_protect = (void *)(kbase + 0x391EB0);
+    vm_map_findspace = (void *)(kbase + 0x390130);
+    vm_map_insert = (void *)(kbase + 0x38E270);
+    vm_map_lock = (void *)(kbase + 0x38CF20);
+    vm_map_unlock = (void *)(kbase + 0x38CF90);
+    proc_rwmem = (void *)(kbase + 0x44DC40);
+    disable_console_output = (void *)(kbase + 0x1A78A78);
+    M_TEMP = (void *)(kbase + 0x1532C00);
+    kernel_map = (void *)(kbase + 0x227BEF8);
+    prison0 = (void *)(kbase + 0x111B8B0);
+    rootvnode = (void *)(kbase + 0x1B25BD0);
+    allproc = (void *)(kbase + 0x22D9B40);
+    sysents = (void *)(kbase + 0x1102D90);
+}
+
+void init_10XXsdk(uint8_t *kbase) {
+    Xfast_syscall = (void *)(kbase + 0x1C0);
+    copyin = (void *)(kbase + 0xD7560);
+    copyout = (void *)(kbase + 0xD7470);
+    printf = (void *)(kbase + 0x450E80);
+    vprintf = (void *)(kbase + 0x450EF0);
+    malloc = (void *)(kbase + 0x36E120);
+    free = (void *)(kbase + 0x36E2E0);
+    memcpy = (void *)(kbase + 0xD7370);
+    memset = (void *)(kbase + 0xD090);
+    memcmp = (void *)(kbase + 0x2A020);
+    kmem_alloc = (void *)(kbase + 0x428960);
+    strlen = (void *)(kbase + 0x160DA0);
+    strcpy = (void *)(kbase + 0x3F0BA0);
+    strncmp = (void *)(kbase + 0x1DDDA0);
+    pause = (void *)(kbase + 0x3FD7C0);
+    kthread_add = (void *)(kbase + 0x3AB9F0);
+    kthread_exit = (void *)(kbase + 0x3ABCE0);
+    sched_prio = (void *)(kbase + 0x4432A0);
+    sched_add = (void *)(kbase + 0x443DA0);
+    kern_yield = (void *)(kbase + 0x3FDAD0);
+    fill_regs = (void *)(kbase + 0x1431D0);
+    set_regs = (void *)(kbase + 0x143300);
+    create_thread = (void *)(kbase + 0x3384E0);
+    kproc_create = (void *)(kbase + 0x3AB490);
+    kthread_set_affinity = (void *)(kbase + 0x3AC350);
+    kthread_suspend_check = (void *)(kbase + 0x3AC0F0);
+    kproc_kthread_add = (void *)(kbase + 0x3AC200);
+    sx_init_flags = (void *)(kbase + 0x97520);
+    sx_xlock = (void *)(kbase + 0x977A0);
+    sx_xunlock = (void *)(kbase + 0x97960);
+    mtx_init = (void *)(kbase + 0x293CB0);
+    mtx_lock_spin_flags = (void *)(kbase + 0x293650);
+    mtx_unlock_spin_flags = (void *)(kbase + 0x2937F0);
+    mtx_lock_sleep = (void *)(kbase + 0x293240);
+    mtx_unlock_sleep = (void *)(kbase + 0x2934F0);
+    kern_reboot = (void *)(kbase + 0x45D6D0);
+    vm_map_lock_read = (void *)(kbase + 0x4762D0);
+    vm_map_lookup_entry = (void *)(kbase + 0x476910);
+    vm_map_unlock_read = (void *)(kbase + 0x476320);
+    vmspace_acquire_ref = (void *)(kbase + 0x476140);
+    vmspace_free = (void *)(kbase + 0x475F70);
+    vm_map_delete = (void *)(kbase + 0x478DD0);
+    vm_map_protect = (void *)(kbase + 0x47B110);
+    vm_map_findspace = (void *)(kbase + 0x479390);
+    vm_map_insert = (void *)(kbase + 0x4774D0);
+    vm_map_lock = (void *)(kbase + 0x476180);
+    vm_map_unlock = (void *)(kbase + 0x4761F0);
+    proc_rwmem = (void *)(kbase + 0x4244A0);
+    disable_console_output = (void *)(kbase + 0x1A3BCA0);
+    M_TEMP = (void *)(kbase + 0x1A5FE30);
+    kernel_map = (void *)(kbase + 0x22A9250);
+    prison0 = (void *)(kbase + 0x111B910);
+    rootvnode = (void *)(kbase + 0x1BF81F0);
+    allproc = (void *)(kbase + 0x2269F30);
+    sysents = (void *)(kbase + 0x11029C0);
+}
+
 void init_1100sdk(uint8_t *kbase) {
-	Xfast_syscall = (void *)(kbase + 0x1C0);
+    Xfast_syscall = (void *)(kbase + 0x1C0);
     copyin = (void *)(kbase + 0x2DDFE0);
     copyout = (void *)(kbase + 0x2DDEF0);
     printf = (void *)(kbase + 0x2FCBD0);
@@ -324,7 +731,7 @@ void init_1100sdk(uint8_t *kbase) {
     kproc_create = (void *)(kbase + 0xC3140);
     kthread_set_affinity = (void *)(kbase + 0xC4000);
     kthread_suspend_check = (void *)(kbase + 0xC3DA0);
-    kproc_kthread_add = (void *)(kbase + 0xC3EB0);  
+    kproc_kthread_add = (void *)(kbase + 0xC3EB0);
     sx_init_flags = (void *)(kbase + 0xE2F80);
     sx_xlock = (void *)(kbase + 0xE3200);
     sx_xunlock = (void *)(kbase + 0xE33C0);
@@ -336,11 +743,11 @@ void init_1100sdk(uint8_t *kbase) {
     kern_reboot = (void *)(kbase + 0x198060);
     vm_map_lock_read = (void *)(kbase + 0x3578B0);
     vm_map_lookup_entry = (void *)(kbase + 0x357EF0);
-    vm_map_unlock_read = (void *)(kbase + 0x357900);  
+    vm_map_unlock_read = (void *)(kbase + 0x357900);
     vmspace_acquire_ref = (void *)(kbase + 0x357720);
     vmspace_free = (void *)(kbase + 0x357550);
     vm_map_delete = (void *)(kbase + 0x35A3B0);
-    vm_map_protect = (void *)(kbase + 0x35C710);  
+    vm_map_protect = (void *)(kbase + 0x35C710);
     vm_map_findspace = (void *)(kbase + 0x35A970);
     vm_map_insert = (void *)(kbase + 0x358AB0);
     vm_map_lock = (void *)(kbase + 0x357760);
@@ -357,23 +764,83 @@ void init_1100sdk(uint8_t *kbase) {
 
 void init_ksdk() {
     uint64_t kbase = get_kbase();
-	cachedKernelBase = kbase;
+    cachedKernelBase = kbase;
     unsigned short firmwareVersion = kget_firmware_from_base(kbase);
-    switch(firmwareVersion) {
-        case 505:
-            init_505sdk((uint8_t *)kbase);
-            break;
-		case 672:
-            init_672sdk((uint8_t *)kbase);
-            break;
-        case 702:
-            init_702sdk((uint8_t *)kbase);
-            break;
-        case 900:
-            init_900sdk((uint8_t *)kbase);
-            break;
-		case 1100:
-            init_1100sdk((uint8_t *)kbase);
-            break;
+    switch (firmwareVersion) {
+    case 505:
+        init_505sdk((uint8_t*)kbase);
+        break;
+    case 672:
+        init_672sdk((uint8_t*)kbase);
+        break;
+    case 700:
+        init_70Xsdk((uint8_t*)kbase);
+        break;
+    case 701:
+        init_70Xsdk((uint8_t*)kbase);
+        break;
+    case 702:
+        init_70Xsdk((uint8_t*)kbase);
+        break;
+    case 750:
+        init_75Xsdk((uint8_t*)kbase);
+        break;
+    case 751:
+        init_75Xsdk((uint8_t*)kbase);
+        break;
+    case 755:
+        init_75Xsdk((uint8_t*)kbase);
+        break;
+    case 800:
+        init_80Xsdk((uint8_t*)kbase);
+        break;
+    case 801:
+        init_80Xsdk((uint8_t*)kbase);
+        break;
+    case 803:
+        init_80Xsdk((uint8_t*)kbase);
+        break;
+    case 850:
+        init_85Xsdk((uint8_t*)kbase);
+        break;
+    case 852:
+        init_85Xsdk((uint8_t*)kbase);
+        break;
+    case 900:
+        init_900sdk((uint8_t*)kbase);
+        break;
+    case 903:
+        init_90Xsdk((uint8_t*)kbase);
+        break;
+    case 904:
+        init_90Xsdk((uint8_t*)kbase);
+        break;
+    case 950:
+        init_9XXsdk((uint8_t*)kbase);
+        break;
+    case 951:
+        init_9XXsdk((uint8_t*)kbase);
+        break;
+    case 960:
+        init_9XXsdk((uint8_t*)kbase);
+        break;
+    case 1000:
+        init_100Xsdk((uint8_t*)kbase);
+        break;
+    case 1001:
+        init_100Xsdk((uint8_t*)kbase);
+        break;
+    case 1050:
+        init_10XXsdk((uint8_t*)kbase);
+        break;
+    case 1070:
+        init_10XXsdk((uint8_t*)kbase);
+        break;
+    case 1071:
+        init_10XXsdk((uint8_t*)kbase);
+        break;
+    case 1100:
+        init_1100sdk((uint8_t*)kbase);
+        break;
     }
 }
